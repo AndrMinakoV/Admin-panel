@@ -1,57 +1,60 @@
-import React from "react";
-import Header from "./components/Header";
-import Users from "./components/Users";
-import AddUser from "./components/AddUser";
+import React from "react"
+import Header from "./Components/Header"
+import Users from "./Components/Users"
+import AddUser from "./Components/AddUser"
+import axios from "axios"
 
 
-
-
+const baseUrl = "https://reqres.in/api/users?page=1"
 
 class App extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-        users : [
-            {
-              id: 1,
-              firstame: "Simkav",
-              lastname: "Vavzanovich",
-              bio: "Hi! I`m Simlav from BlastTM 1111111111111111111111111111111111111111111111111111111111111111111111",
-              age: 47,
-              isHappy: false,
-            },
-            {
-              id: 2,
-              firstame: "Mecheniy",
-              lastname: "Abobovich",
-              bio: "Ya eblan",
-              age: 99,
-              isHappy: true,
-            },
-          ]
+    constructor(props) {
+        super(props)
+
+        axios.get(baseUrl).then((res) => {
+            this.setState({ users: res.data.data })
+        })
+
+        this.state = {
+            users: []
+        }
+        this.addUser = this.addUser.bind(this)
+        this.deleteUser = this.deleteUser.bind(this)
+        this.editUser = this.editUser.bind(this)
     }
-    this.addUser = this.addUser.bind(this)
+
+    render() {
+        return (<div>
+            <h1><Header title="Управление пользователями" /></h1>
+            <main>
+                <Users users={this.state.users} onEdit={this.editUser} onDelete={this.deleteUser} />
+            </main>
+            <aside>
+                <AddUser onAdd={this.addUser} />
+            </aside>
+        </div>)
+    }
+
+    deleteUser(id) {
+        this.setState({
+            users: this.state.users.filter((el) => el.id !== id)
+            
+        })
+    }
+
+    editUser(user) {
+        let allUsers = this.state.users
+        allUsers[user.id - 1] = user
+
+        this.setState({ users: [] }, () => {
+            this.setState({ users: [...allUsers] })
+        })
+    }
+    addUser(user) {
+        const id = this.state.users.length + 1
+        this.setState({users: [...this.state.users, {id, ...user}]})
+    }
 }
-
-  render() {
-    return (
-        <div>
-              <h1><Header title="Список пользователей"/></h1>
-              <main>
-                <Users users={this.state.users}/>
-              </main>
-              <aside>
-                <AddUser onAdd={this.addUser}/>
-              </aside>
-        </div>
-      );
-  }
-  addUser(user) {
-    const id = this.state.users.length + 1
-    this.setState({users: [...this.state.users, {id, ...user}]})
-  }
-
-
-}
-
 export default App
+
+
