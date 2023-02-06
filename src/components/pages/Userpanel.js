@@ -20,7 +20,7 @@ export default class Userpanel extends Component {
         this.deleteUser = this.deleteUser.bind(this)
         this.editUser = this.editUser.bind(this)
     }
-    render() {
+    render() {    document.title = 'BeautyBot | Управление пользователями'
         return (
 <div>
             <h1><Header title="Управление пользователями" /></h1>
