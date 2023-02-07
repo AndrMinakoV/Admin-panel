@@ -1,11 +1,11 @@
 import React from "react"
-import Home from "./Components/pages/Home"
-import Userpanel from "./Components/pages/Userpanel"
+import Home from "./components/pages/Home"
+import Userpanel from "./components/pages/Userpanel"
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Alerts from "./Components/pages/Alerts"
-import Catalog from "./Components/pages/Catalog"
-import Logs from "./Components/pages/Logs"
-import Orders from "./Components/pages/Orders"
+import Alerts from "./components/pages/Alerts"
+import Catalog from "./components/pages/Catalog"
+import Logs from "./components/pages/Logs"
+import Orders from "./components/pages/Orders"
 
 class App extends React.Component {
     

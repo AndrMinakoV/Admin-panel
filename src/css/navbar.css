@@ -1,12 +1,13 @@
 .navigation {
-    background-color: #18191c;
-    width: 400px;
+    background-color: #2f3136;
+    width: 300px;
+    height: 100vb;
 }
 
 .navigation h2 {
-    color: rgb(9, 9, 35);
-    background-color: #18191c;
-
+    background-color: #2f3136;
+    border-bottom-style: solid;
+    border-bottom-color: black;
 }
 
 
@@ -17,7 +18,7 @@
     font-weight: 300;
     margin-bottom: 10px;
     border: 0;
-    background: #18191c;
+    background: #2f3136;
     color: #fff;
     outline: 0;
     font-size: 15px;

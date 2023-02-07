@@ -9,8 +9,8 @@ export default class Home extends Component {
           <Header title="Панель управления" />
         </h1>
         <div className="navigation">
-          <h2 class="h2">Выберите функцию.</h2>
-          <ul class="Pompadur">
+          <h2 className="h2">Выберите функцию.</h2>
+          <ul className="Pompadur">
             <li>
               <a сlass="active" href="/">
                 Панель управления
